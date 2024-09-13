@@ -1,14 +1,16 @@
 package main
 
 import (
-	"familyFormUi/be"
+	"familyFormUi/exec"
+	"log"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
-	// err := godotenv.Load()
-	// if err != nil {
-	// 	log.Fatal("Error loading .env file")
-	// }
-	be.InitRedis()
-	be.InitRoutes()
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	exec.Init()
 }
