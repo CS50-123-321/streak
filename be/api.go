@@ -18,8 +18,8 @@ func InitRoutes() {
 	// Initialize Gin router
 	router := gin.Default()
 
-	router.LoadHTMLGlob("html/template/*")
-	router.Static("/static", "./html/template")
+	router.LoadHTMLGlob("static/*")
+	router.Static("/static", "./static/")
 	//router.LoadHTMLFiles("./static/index.html")
 
 	// Serve the index.html file at the root ("/")
