@@ -3,6 +3,7 @@ package config
 import (
 	"context"
 	"log"
+	"os"
 
 	"github.com/redis/go-redis/v9"
 )
@@ -13,8 +14,7 @@ var (
 )
 
 func InitRedis() *redis.Client {
-	//isTesting := os.Getenv("Testing")
-	isTesting := "false"
+	isTesting := os.Getenv("Testing")
 	if isTesting == "false" {
 		opts, err := redis.ParseURL("redis://default:67c58cbb6e5b41bcbeba8a7a8d22266a@fly-habit.upstash.io:6379")
 		if err != nil {

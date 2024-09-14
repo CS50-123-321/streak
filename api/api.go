@@ -41,19 +41,18 @@ func server(TId int64) {
 			c.JSON(http.StatusBadRequest, gin.H{"err": err.Error()})
 			return
 		}
-		c.JSON(http.StatusOK, gin.H{"message": h})
+		c.JSON(http.StatusOK, gin.H{"result": h})
 	})
 
 	router.Run(":8080")
 }
 func GetUserBotID() {
 	config.B.Handle("/start", func(c tele.Context) error {
-		config.B.Stop()
+		c.Send("Click Join!!")
 		server(c.Sender().ID)
 		return nil
 	})
 	log.Println("bot is running")
 	config.B.Start()
-
 }
 

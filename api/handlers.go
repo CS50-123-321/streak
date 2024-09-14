@@ -12,12 +12,12 @@ import (
 )
 
 func (h *Habit) Create() (err error) {
-	key := fmt.Sprintf("habitMember:%d", *h.TeleID)
+	key := fmt.Sprintf("habitMember:%d", h.TeleID)
 	err = config.Rdb.HSet(context.Background(), key, h).Err()
 	if err != nil {
 		return err
 	}
-	msg := fmt.Sprintf("%v has joined the club, he is planning to do %v within %v, he will say xx", h.Name, h.HabitName, h.CommitmentPeriod)
+	msg := fmt.Sprintf("%v, %v", h, *h.TeleID)
 	botID, err := strconv.Atoi(os.Getenv("TestingBotID"))
 	if err != nil {
 		log.Println("err:", err)
