@@ -35,7 +35,7 @@ func server(TId int64) {
 			return
 		}
 		//Save the h data in Redis
-		h.TeleID = &TId
+		h.TeleID = TId
 		err := h.Create()
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"err": err.Error()})
@@ -44,7 +44,7 @@ func server(TId int64) {
 		c.JSON(http.StatusOK, gin.H{"result": h})
 	})
 
-	router.Run(":8080")
+	router.Run(":9000")
 }
 func GetUserBotID() {
 	config.B.Handle("/start", func(c tele.Context) error {
@@ -55,4 +55,3 @@ func GetUserBotID() {
 	log.Println("bot is running")
 	config.B.Start()
 }
-

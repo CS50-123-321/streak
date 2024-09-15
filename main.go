@@ -13,5 +13,6 @@ func main() {
 		log.Println("Error loading .env file")
 	}
 	exec.Init()
+
 	select {}
 }
